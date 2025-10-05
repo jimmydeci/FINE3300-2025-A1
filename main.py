@@ -3,9 +3,9 @@
 from ExchangeRates import ExchangeRates
 from MortgagePayment import MortgagePayment
 
-# Test the MortgagePayment class
-if __name__ == "__main__":
-    # Example from the assignment
+
+def run_mortgage():
+    print("\n--- Mortgage Payments ---")
     principal = float(input("Enter the principal amount: "))
     rate = float(input("Enter the quoted annual interest rate (%): "))
     years = int(input("Enter the amortization period (in years): "))
@@ -13,7 +13,7 @@ if __name__ == "__main__":
     calc = MortgagePayment(rate, years)
     payments = calc.payments(principal)
 
-    print("\n--- Mortgage Payments Test ---")
+    print("\n--- Mortgage Payment Results ---")
     print(f"Monthly Payment: ${payments[0]:.2f}")
     print(f"Semi-monthly Payment: ${payments[1]:.2f}")
     print(f"Bi-weekly Payment: ${payments[2]:.2f}")
@@ -21,12 +21,13 @@ if __name__ == "__main__":
     print(f"Rapid Bi-weekly Payment: ${payments[4]:.2f}")
     print(f"Rapid Weekly Payment: ${payments[5]:.2f}")
 
-    # Test the ExchangeRates class
-    print("\n--- Exchange Rates Test ---")
 
-    xr = ExchangeRates("BankOfCanadaExchangeRates.csv")
+def run_exchange_rates():
+    print("\n--- Exchange Rates ---")
+    # Make sure the CSV file path matches your setup
+    xr = ExchangeRates(
+        "/Users/jimmydeci/Desktop/FINE3300-2025-A1/BankOfCanadaExchangeRates.csv")
 
-    # Prompt the user for conversions
     amount = float(input("Enter amount: "))
     from_curr = input("Convert from (USD or CAD): ")
     to_curr = input("Convert to (USD or CAD): ")
@@ -36,3 +37,23 @@ if __name__ == "__main__":
         print(f"{amount} {from_curr.upper()} = {result} {to_curr.upper()}")
     except ValueError as e:
         print("Error:", e)
+
+
+if __name__ == "__main__":
+    while True:
+        print("\n=== Assignment 1 Program ===")
+        print("1. Mortgage Payment Calculator")
+        print("2. Currency Converter (USD/CAD)")
+        print("3. Exit")
+
+        choice = input("Enter your choice (1/2/3): ")
+
+        if choice == "1":
+            run_mortgage()
+        elif choice == "2":
+            run_exchange_rates()
+        elif choice == "3":
+            print("Goodbye!")
+            break
+        else:
+            print("Invalid option, please try again.")
