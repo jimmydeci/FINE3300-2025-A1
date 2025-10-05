@@ -25,8 +25,7 @@ def run_mortgage():
 def run_exchange_rates():
     print("\n--- Exchange Rates ---")
     # Make sure the CSV file path matches your setup
-    xr = ExchangeRates(
-        "/Users/jimmydeci/Desktop/FINE3300-2025-A1/BankOfCanadaExchangeRates.csv")
+    xr = ExchangeRates("BankOfCanadaExchangeRates.csv")
 
     amount = float(input("Enter amount: "))
     from_curr = input("Convert from (USD or CAD): ")
